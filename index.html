@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amir ❤️ Nadeen</title>
+  <title>אמיר ❤️ נדין</title>
   <style>
     body{font-family:system-ui,Arial;margin:0;min-height:100vh;display:grid;place-items:center;background:#fff;overflow:hidden}
     .card{width:min(560px,92vw);padding:28px;border:1px solid #eee;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.06);text-align:center;position:relative;z-index:2;background:rgba(255,255,255,.95)}
@@ -17,48 +17,45 @@
     .msg{font-size:18px;margin-top:12px}
     .small{font-size:13px;color:#666;margin-top:10px}
 
-    /* Floating hearts */
     .heart{position:fixed;bottom:-40px;font-size:18px;opacity:.85;z-index:1;pointer-events:none;animation:floatUp linear forwards}
     @keyframes floatUp{
       from{transform:translateY(0);opacity:0}
       10%{opacity:.9}
       to{transform:translateY(-110vh) translateX(var(--drift)) scale(var(--scale));opacity:0}
     }
-
     .playBtn{margin-top:12px;background:#111;color:#fff;border:0;padding:12px 18px;border-radius:999px;font-size:16px;cursor:pointer}
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Amir ❤️ Nadeen</h1>
-    <p id="question">Nadeen, will you be my valentine? 💘</p>
+    <h1>אמיר ❤️ נדין</h1>
+    <p id="question">נדין, תהיי הוולנטיין שלי? 💘</p>
 
     <div class="btns" id="buttons">
-      <button class="yes" id="yesBtn">Yes 😍</button>
-      <button class="no" id="noBtn">No 🙈</button>
+      <button class="yes" id="yesBtn">כן 😍</button>
+      <button class="no" id="noBtn">לא 🙈</button>
     </div>
 
     <div class="msg" id="msg"></div>
     <div class="small" id="small"></div>
 
     <a class="share" id="waShare" href="#" target="_blank" rel="noopener">
-      WhatsApp Share 💬
+      שיתוף בוואטסאפ 💬
     </a>
 
-    <!-- These files must exist in repo root: happy.mp3 and sad.mp3 -->
-    <audio id="happyAudio" src="./happy.mp3?v=3" preload="auto" playsinline></audio>
-    <audio id="sadAudio"   src="./sad.mp3?v=3"   preload="auto" playsinline></audio>
+    <!-- חייבים להיות באותו תיקייה כמו index.html -->
+    <audio id="happyAudio" src="./happy.mp3?v=1" preload="auto" playsinline></audio>
+    <audio id="sadAudio"   src="./sad.mp3?v=1"   preload="auto" playsinline></audio>
   </div>
 
   <script>
-    const myName = "Amir";
-    const herName = "Nadeen";
-    const questionText = "will you be my valentine";
+    const myName = "אמיר";
+    const herName = "נדין";
 
-    // Always share the exact link (works even if you change repo later)
+    // משתף את הקישור המדויק שהעמוד נפתח ממנו
     const siteUrl = window.location.href;
 
-    const shareText = `💘 ${herName}, ${questionText}? 😍\n\nOpen this: ${siteUrl}`;
+    const shareText = `💘 ${herName}, תהיי הוולנטיין שלי? 😍\n\nתפתחי פה: ${siteUrl}`;
     document.getElementById("waShare").href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
 
     const buttons = document.getElementById("buttons");
@@ -68,7 +65,7 @@
     const happyAudio = document.getElementById("happyAudio");
     const sadAudio   = document.getElementById("sadAudio");
 
-    // Floating hearts
+    // לבבות מרחפים
     setInterval(() => {
       const h = document.createElement("div");
       h.className = "heart";
@@ -94,9 +91,7 @@
     }
 
     async function playWithFallback(audioEl, label) {
-      // force reload (helps with GitHub caching)
       try { audioEl.load(); } catch(e) {}
-
       try {
         audioEl.volume = 0.9;
         await audioEl.play();
@@ -132,16 +127,17 @@
       buttons.style.display = "none";
 
       const lines = [
-        `Yessss!! 😍💞`,
-        `${herName}, you just made ${myName} the luckiest guy alive.`,
-        `Now come here… I owe you a thousand kisses 😘`,
-        `Warning ⚠️: You are now officially stuck with me forever 😏❤️`,
-        `Happy Valentine’s Day, my love — this is just the beginning 💍✨`
+        `ישששש! 😍💞`,
+        `${herName}, עכשיו עשית את ${myName} הכי מאושר בעולם.`,
+        `בואי לכאן… אני חייב לך אלף נשיקות 😘`,
+        `אזהרה ⚠️: מעכשיו את “תקועה” איתי לנצח 😏❤️`,
+        `ולנטיין שמח אהובה שלי — זה רק ההתחלה 💍✨`
       ];
-      msg.innerHTML = lines.map(l => `<div>${l}</div>`).join("");
-      small.textContent = "Turn up the volume 😄🎶";
 
-      await playWithFallback(happyAudio, "▶️ Tap to play happy song");
+      msg.innerHTML = lines.map(l => `<div>${l}</div>`).join("");
+      small.textContent = "תעלי ווליום 😄🎶";
+
+      await playWithFallback(happyAudio, "▶️ לחצי כדי להפעיל את השיר השמח");
       launchConfetti();
     };
 
@@ -150,13 +146,13 @@
       buttons.style.display = "none";
 
       msg.innerHTML = `
-        <div>😢 Oh no…</div>
-        <div>${myName} is heartbroken 💔</div>
-        <div>Sad song time… 🎻</div>
+        <div>😢 אוי לא…</div>
+        <div>${myName} נשבר לו הלב 💔</div>
+        <div>מפעיל מוזיקה עצובה… 🎻</div>
       `;
-      small.textContent = "If it doesn’t start, tap the button below 🙈";
+      small.textContent = "אם לא התחיל, לחצי על הכפתור למטה 🙈";
 
-      await playWithFallback(sadAudio, "▶️ Tap to play sad song");
+      await playWithFallback(sadAudio, "▶️ לחצי כדי להפעיל את השיר העצוב");
     };
   </script>
 </body>
